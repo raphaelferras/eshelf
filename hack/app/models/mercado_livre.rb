@@ -47,8 +47,16 @@ class MercadoLivre
     request_auth :delete, url, params
   end
   
-  def users_me
+  def me
     get_auth '/users/me'
+  end
+  
+  def user_products(user)
+    get_auth "/users/#{user.identity.uid}/items/search"
+  end
+  
+  def items(ids)
+    get "/items", { :ids => ids.join(",") }
   end
   
   def search(query)

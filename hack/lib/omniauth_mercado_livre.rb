@@ -6,7 +6,7 @@ module OmniAuth
       
       CLIENT_OPTIONS = {
         :site => "https://api.mercadolibre.com",
-        :authorize_url => "https://auth.mercadolibre.com.ar/authorization",
+        :authorize_url => "https://auth.mercadolivre.com.br/authorization",
       }
       
       # Give your strategy a name.

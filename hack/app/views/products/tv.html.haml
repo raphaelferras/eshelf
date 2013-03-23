@@ -1,3 +1,9 @@
+%h1 Listing products
+
+= form_tag products_path, :method => :get do
+	= search_field_tag 'q', params[:q]
+	= submit_tag 'Buscar'
+
 - @ml_products.each do |product|
 	%div
 		%img{ :src => product["thumbnail"] }

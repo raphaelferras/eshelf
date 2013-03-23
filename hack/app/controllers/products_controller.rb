@@ -2,7 +2,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = mercado_livre.search params[:q]
+    search = mercado_livre.user_products(current_user)
+    @ml_products = mercado_livre.items search["results"]
     
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +15,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }
@@ -80,4 +81,15 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def tv
+    @products = Product.find(:user_id => current_user.id)
+    @ml_products = mercado_livre.items @products.map{ |p| p.mid }
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @product }
+    end
+  end
+  
 end
