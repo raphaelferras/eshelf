@@ -1,14 +1,22 @@
 Hack::Application.routes.draw do
   
-  resources :products
+  resources :products do
+    member do
+      get 'qrcode'
+    end
+    collection do
+      get 'tv'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
   
   match '/auth/:provider/callback', to: 'sessions#create'
   match '/logout', to: 'sessions#destroy'
+  match '/login', to: 'sessions#new'
   
-  resources :sessions, :only => [ :create, :destroy ]
+  resources :sessions, :only => [ :create ]
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

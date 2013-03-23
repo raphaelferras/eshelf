@@ -1,0 +1,178 @@
+body {
+	background: -webkit-gradient(
+	  radial, 50% 8%, 220, 50% 8%, 620, from(#ffec32), to(#fec801)
+	);
+}
+
+#main {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+    width: 100%;
+}
+
+footer section {
+    margin-left: 75px;
+}
+
+footer .qrcode {
+    float: left;
+    padding: 2px;
+    margin-right: 8px;
+}
+
+footer span {
+    width: 200px;
+    float: left;
+    margin-right: 15px;
+    color: #1b3fa9;
+    font-size: 20px;
+    font-variant: small-caps;
+    font-family: 'Lilita One', cursive;
+}
+
+h1 {
+    color: #1b3fa9;
+    font-size: 40px;
+    font-variant: small-caps;
+    font-family: 'Lilita One', cursive;
+}
+
+.stroke {
+    text-shadow: 1px 1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px -1px 0 #fff,
+    0px 1px 0 #fff,
+    0px -1px 0 #fff,
+    -1px 0px 0 #fff,
+    1px 0px 0 #fff,
+    2px 2px 0 #fff,
+    -2px 2px 0 #fff,
+    2px -2px 0 #fff,
+    -2px -2px 0 #fff,
+    0px 2px 0 #fff,
+    0px -2px 0 #fff,
+    -2px 0px 0 #fff,
+    2px 0px 0 #fff,
+    1px 2px 0 #fff,
+    -1px 2px 0 #fff,
+    1px -2px 0 #fff,
+    -1px -2px 0 #fff,
+    2px 1px 0 #fff,
+    -2px 1px 0 #fff,
+    2px -1px 0 #fff,
+    -2px -1px 0 #fff,
+    1px 1px 10px #000;
+}
+
+.product {
+    position: absolute;
+    top: 10%;
+    right: -100%;
+}
+
+.product .description {
+    position: absolute;
+    top: -20px;
+    left: 450px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 400px;
+}
+
+.qrcode {
+    width: 100px;
+    height: auto;
+    padding: 10px;
+    background: #fff;
+}
+
+.product .description label.price {
+    color: rgb(0, 139, 204);
+    font-size: 40px;
+    font-variant: small-caps;
+    font-family: 'Lilita One', cursive;
+}
+.product .description label.price small {
+    font-size: 30px;
+}
+
+.product > img {
+	width: 400px;
+	height: auto;
+    background-color: #fff;
+	padding: 10px 10px 15px;
+	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, .25);
+}
+
+/* PROCESSAR AQUI! */
+
+/* P1 */
+.product.p1 {
+    animation: transitimage 10s linear 0s;
+    -moz-animation: transitimage 10s linear 0s;
+    -webkit-animation: transitimage 10s linear 0s;
+    -o-animation: transitimage 10s linear 0s;
+}
+
+.product.p1 > img {
+    -webkit-animation:  rotateimg 2.5s linear 0s, 
+                        pluswidth 1.5s linear .5s;
+}
+
+.product.p1 .description {
+    -webkit-animation: transitdescription 3.5s linear 0s;
+}
+
+/* P2 */
+.product.p2 {
+    animation: transitimage 10s linear 9s;
+    -moz-animation: transitimage 10s linear 9s;
+    -webkit-animation: transitimage 10s linear 9s;
+    -o-animation: transitimage 10s linear 9s;
+}
+
+.product.p2 > img {
+    -webkit-animation:  rotateimg 2.5s linear 9s,
+                        pluswidth 1.5s linear 9.5s;
+}
+
+.product.p2 .description {
+    -webkit-animation: transitdescription 3.5s linear 9s;
+}
+
+
+/* KEYFRAMES */
+
+@-webkit-keyframes transitdescription {
+    15%     { margin-left: 45px;}
+}
+
+@-webkit-keyframes transitimage {
+    0%      { right: -100%;}
+    10%     { right: -webkit-calc(93% - 350px);}
+    25%    { right: -webkit-calc(90% - 350px);}
+    90%    { right: -webkit-calc(90% - 350px);}
+    100%    { right: -webkit-calc(200%);}
+}
+
+@-webkit-keyframes rotateimg {
+	50%	 {-webkit-transform: rotate(-10deg);}
+}
+
+@-webkit-keyframes pluswidth {
+	50%  {	width: 450px;}
+}
+
+@-webkit-keyframes leaveimage {
+    50%  {  width: 450px;}
+}

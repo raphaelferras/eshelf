@@ -1,10 +1,21 @@
+# encoding: UTF-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  
+  before_filter :authenticated
 
   helper_method :all
 
   protected
 
+  def authenticated
+    redirect_to(login_path, warning: 'Por favor faça login para continuar') unless signed_in?
+  end
+  
+  def not_authenticated
+    redirect_to(root_url, warning: 'Você não pode acessar essa página') if signed_in? 
+  end
+  
   def mercado_livre
     @ml ||= MercadoLivre.new(access_token)
   end
@@ -30,4 +41,5 @@ class ApplicationController < ActionController::Base
     @access_token = access_token
     session[:auth] = access_token
   end
+  
 end

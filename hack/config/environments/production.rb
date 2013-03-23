@@ -1,6 +1,9 @@
 Hack::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-
+  
+  ENV["MERCADO_LIVRE_APP_ID"] = "1978514785412854"
+  ENV["MERCADO_LIVRE_APP_SECRET"] = "GKXcp5ecgqiFGMoVJDquOLC7ZRf38Zky"
+  
   # Code is not reloaded between requests
   config.cache_classes = true
 

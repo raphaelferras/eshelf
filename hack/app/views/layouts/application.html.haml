@@ -2,8 +2,10 @@
 %html
 	%head
 		%title Hack
-		= stylesheet_link_tag    "application", :media => "all"
-		= javascript_include_tag "application"
+		= stylesheet_link_tag "application", :media => "all"
+		= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Lilita+One'
+		= stylesheet_link_tag "style", :media => "all"
 		= csrf_meta_tags
 	%body
 		= yield
+		= javascript_include_tag "application"
