@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Product was successfully created.' }
         format.json { render json: @product, status: :created, location: @product }
       else
         format.html { render action: "new" }
@@ -80,13 +80,13 @@ class ProductsController < ApplicationController
     @product.destroy
 
     respond_to do |format|
-      format.html { redirect_to products_url }
+      format.html { redirect_to root_url }
       format.json { head :no_content }
     end
   end
   
   def tv
-    @products = Product.where(:user_id => current_user.id)
+    @products = Product.where(:user_id => current_user.id).limit(4)
     @ml_products = mercado_livre.items @products.map{ |p| p.mid }
     
     @products, @ml_products = ml_to_products(@products, @ml_products)

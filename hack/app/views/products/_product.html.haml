@@ -1,5 +1,9 @@
-%blockquote
-	%h4
-		%img{ :src => product.ml_data["thumbnail"] }
-		= product.ml_data["title"]
-		%small= brl_currency product.ml_data["price"]
+.anunciado
+	.row
+		%blockquote.span1
+			%img{ :src => product.ml_data["thumbnail"] }
+		.span9
+			%h4= product.ml_data["title"]
+			%p= brl_currency product.ml_data["price"]
+		.span1
+			= link_to "Remover", product_path(product), :method => :delete, :confirm => "Tem certeza que deseja remover?", :class => "btn"

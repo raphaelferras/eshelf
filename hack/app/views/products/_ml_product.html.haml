@@ -1,5 +1,9 @@
-%blockquote
-	%h4
-		%img{ :src => ml_product["thumbnail"] }
-		= ml_product["title"]
-		%small= brl_currency ml_product["price"]
+.nao-anunciado
+	.row
+		%blockquote.span1
+			%img{ :src => ml_product["thumbnail"] }
+		.span9
+			%h4= ml_product["title"]
+			%p= brl_currency ml_product["price"]
+		.span1
+			= link_to "Anunciar", products_path(:product => { :mid => ml_product["id"] }), :method => :post, :class => "btn btn-primary"

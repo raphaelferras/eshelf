@@ -44,3 +44,10 @@ blockquote:hover {
 	height: 100px !important;
 	width: 303px !important;
 }
+a.btn-primary:visited {
+	color: #fff !important;
+}
+.pull-right {
+	position: absolute;
+	top: 0px;
+}

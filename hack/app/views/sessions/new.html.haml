@@ -1,1 +1,32 @@
 = link_to "Fazer login com o Mercado Livre", signin_path(:mercado_livre)
+.navbar.navbar-inverse.navbar-fixed-top
+	.navbar-inner
+		.container
+			= image_tag "logo.png"
+				
+.container
+	.row
+		.span6
+			.hero-unit
+				.page-header
+					%h1
+						Cliente
+						%br
+						%small download do app
+				%p.text-center
+					= image_tag "googleplay.png"
+		.span6
+			.hero-unit
+				.page-header
+					%h1
+						Vendedor
+						%br
+						%small entrar no sistema
+				%p.text-center
+					%form{:action=>signin_path(:mercado_livre)}
+						%button.btn.btn-large.btn-primary.ml-login{:type=>"submit"}
+							%p Fazer login com o
+							%p Mercado Livre
+						
+%footer
+	%p &copy; Powered by Mercado Livre
