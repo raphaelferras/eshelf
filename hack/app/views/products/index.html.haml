@@ -1,0 +1,12 @@
+%h1 Listing products
+
+= form_tag products_path, :method => :get do
+	= search_field_tag 'q', params[:q]
+	= submit_tag 'Buscar'
+
+- @products["results"].each do |product|
+	%div
+		%img{ :src => product["thumbnail"] }
+		%h1= product["title"]
+		%h2= product["subtitle"]
+		%p= product["price"]
