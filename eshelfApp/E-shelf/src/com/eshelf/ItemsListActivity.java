@@ -8,19 +8,27 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.eshelf.services.ServiceRequest;
 import com.eshelf.util.Common;
 
 public class ItemsListActivity extends Activity {
+	ListView listView;
+	ImageView mLoading;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_items_list);
+		listView = (ListView) findViewById(R.id.mylist);
+		mLoading = (ImageView) findViewById(R.id.loading);
 
+		mLoading.setVisibility(View.VISIBLE);
+		listView.setVisibility(View.GONE);
 		ServiceRequest teste = new ServiceRequest(Common.SV_BOOKMARKS,
 				Common.WITH_TOKEN) {
 			public void work(String result) {
@@ -64,8 +72,10 @@ public class ItemsListActivity extends Activity {
 	}
 
 	private void parserJson2(String result) {
+		mLoading.setVisibility(View.GONE);
+		listView.setVisibility(View.VISIBLE);
 		JSONArray jObject;
-		Pair<String,String>[] values = null;
+		Pair<String, String>[] values = null;
 		try {
 			jObject = new JSONArray(result);
 			values = new Pair[jObject.length()];
@@ -73,15 +83,17 @@ public class ItemsListActivity extends Activity {
 				JSONObject menuObject = jObject.getJSONObject(i);
 
 				// String idItem = menuObject.getString("item_id");
-				values[i] = new Pair<String, String>(menuObject.getString("title"),menuObject.getString("thumbnail"));
+				values[i] = new Pair<String, String>(
+						menuObject.getString("title"),
+						menuObject.getString("thumbnail"));
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ListView listView = (ListView) findViewById(R.id.mylist);
 
-		ArrayAdapter<Pair<String,String> > adapter = new ItemsListAdapter(this, values);
+		ArrayAdapter<Pair<String, String>> adapter = new ItemsListAdapter(this,
+				values);
 
 		// Assign adapter to ListView
 		listView.setAdapter(adapter);

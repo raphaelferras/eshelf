@@ -1,13 +1,14 @@
 package com.eshelf;
 
-import com.eshelf.util.Common;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+
+import com.eshelf.util.Common;
 
 public class MenuActivity extends Activity {
 
@@ -16,7 +17,7 @@ public class MenuActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu);
 
-		final Button bQRCode = (Button) findViewById(R.id.qrcode);
+		final ImageButton bQRCode = (ImageButton) findViewById(R.id.qrcode);
 		bQRCode.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(getApplicationContext(),
@@ -25,7 +26,7 @@ public class MenuActivity extends Activity {
 			}
 		});
 
-		final Button bLogOut = (Button) findViewById(R.id.logout);
+		final ImageButton bLogOut = (ImageButton) findViewById(R.id.logout);
 		bLogOut.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Common.getInstance().clear();
@@ -35,7 +36,7 @@ public class MenuActivity extends Activity {
 			}
 		});
 		
-		final Button btItemsList = (Button) findViewById(R.id.items_list);
+		final ImageButton btItemsList = (ImageButton) findViewById(R.id.items_list);
 		btItemsList.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(getApplicationContext(),

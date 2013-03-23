@@ -1,0 +1,7 @@
+INDEX VERSION 1.126+C:\Users\PH\mercadolivre\eshelf\eshelfApp\.metadata\.plugins\org.eclipse.jdt.core
+2169254422.index
+1677777490.index
+2848971048.index
+52108211.index
+1665642232.index
+3352491446.index

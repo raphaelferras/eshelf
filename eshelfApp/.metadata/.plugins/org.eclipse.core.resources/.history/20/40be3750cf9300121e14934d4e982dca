@@ -1,0 +1,45 @@
+package com.eshelf;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+
+import com.eshelf.services.ServiceRequest;
+import com.eshelf.util.Common;
+
+public class ItemActivity extends Activity {
+	String mProductID;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_item);
+
+		Bundle extras = getIntent().getExtras();
+		
+		
+		mProductID = extras.getString("productID", "");
+
+		ServiceRequest teste = new ServiceRequest(Common.SV_ITEM_DETAILS + "/"
+				+ mProductID, Common.NO_TOKEN) {
+			public void work(String result) {
+				parserJson(result);
+			}
+
+		};
+		teste.execute();
+
+	}
+
+	private void parserJson(String result) {
+		Log.d("PH", "UNBELIVIBLE!" + result);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.activity_item, menu);
+		return true;
+	}
+
+}

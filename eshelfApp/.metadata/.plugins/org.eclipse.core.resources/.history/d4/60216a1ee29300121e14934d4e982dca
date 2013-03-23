@@ -1,0 +1,5 @@
+package com.eshelf;
+
+public class ItemsListAdapter {
+
+}

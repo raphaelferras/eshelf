@@ -35,7 +35,6 @@ public class ItemsListAdapter extends ArrayAdapter<Pair<String,String> > {
 				.findViewById(R.id.comercial_image);
 		textView.setText(values[position].first);
 		// Change the icon for Windows and iPhone
-		String s = values[position].first;
 		new DownloadImageTask(imageView)
 		.execute(values[position].second);
 		return rowView;
