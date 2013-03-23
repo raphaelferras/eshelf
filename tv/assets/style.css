@@ -10,31 +10,14 @@ body {
 	width: 100%;
 }
 
-.product {
-	position: absolute;
-	top: 20%;
-	right: -webkit-calc(90% - 300px);
-	animation: transitimage 2s;
-	-moz-animation: transitimage 2s;
-	-webkit-animation: transitimage 2s;
-	-o-animation: transitimage 2s;
-}
-
-@-webkit-keyframes transitimage {
-	0%		{ right: -100%;}
-	25%		{ right: -webkit-calc(93% - 300px);}
-	100%	{ right: -webkit-calc(90% - 300px);}
-}
-
-.product .description {
-	position: absolute;
-	top: -30px;
-	left: 400px;
-	white-space: nowrap;
-}
-
 h1 {
-	color: #1b3fa9;
+    color: #1b3fa9;
+    font-size: 40px;
+    font-variant: small-caps;
+    font-family: 'Lilita One', cursive;
+}
+
+.stroke {
     text-shadow: 1px 1px 0 #fff,
     -1px 1px 0 #fff,
     1px -1px 0 #fff,
@@ -60,40 +43,105 @@ h1 {
     2px -1px 0 #fff,
     -2px -1px 0 #fff,
     1px 1px 10px #000;
-
-    font-size: 40px;
-    font-variant: small-caps;
-/*   -webkit-text-stroke: 4px white;*/
-	font-family: 'Lilita One', cursive;
 }
 
-.product img {
-	width: 300px;
+.product {
+    position: absolute;
+    top: 10%;
+    right: -100%;
+}
+
+.product .description {
+    position: absolute;
+    top: -20px;
+    left: 450px;
+    white-space: nowrap;
+}
+
+.product .description > img {
+    width: 100px;
+    height: auto;
+    padding: 10px;
+    background: #fff;
+}
+
+.product .description label.price {
+    color: rgb(0, 139, 204);
+    font-size: 40px;
+    font-variant: small-caps;
+    font-family: 'Lilita One', cursive;
+}
+.product .description label.price small {
+    font-size: 30px;
+}
+
+.product > img {
+	width: 400px;
 	height: auto;
-	padding: 10px;
-/*	background-color: #fff;*/
-	padding: 4px;
-/*	background-color: rgb(255, 255, 255);
-	-webkit-box-shadow: 0px 1px 22px rgb(136, 136, 136);
-	-moz-box-shadow: 0px 1px 22px rgb(136, 136, 136);
-	box-shadow: 0px 1px 55px rgb(136, 136, 136);*/
-	background: rgb(255, 255, 255);
-	display: inline;
-	float: left;
-	margin: 0 0 27px 30px;
+    background-color: #fff;
 	padding: 10px 10px 15px;
-	text-align: center;
-	font-family: "Marker Felt", sans-serif;
-	text-decoration: none;
-	color: rgb(51, 51, 51);
-	font-size: 18px;
 	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, .25);
-	-webkit-animation: rotateimg 2.5s, pluswidth 1.5s linear .5s;
+}
+
+/* PROCESSAR AQUI! */
+
+/* P1 */
+.product.p1 {
+    animation: transitimage 10s linear 0s;
+    -moz-animation: transitimage 10s linear 0s;
+    -webkit-animation: transitimage 10s linear 0s;
+    -o-animation: transitimage 10s linear 0s;
+}
+
+.product.p1 > img {
+    -webkit-animation:  rotateimg 2.5s linear 0s, 
+                        pluswidth 1.5s linear .5s;
+}
+
+.product.p1 .description {
+    -webkit-animation: transitdescription 3.5s linear 0s;
+}
+
+/* P2 */
+.product.p2 {
+    animation: transitimage 10s linear 9s;
+    -moz-animation: transitimage 10s linear 9s;
+    -webkit-animation: transitimage 10s linear 9s;
+    -o-animation: transitimage 10s linear 9s;
+}
+
+.product.p2 > img {
+    -webkit-animation:  rotateimg 2.5s linear 9s,
+                        pluswidth 1.5s linear 9.5s;
+}
+
+.product.p2 .description {
+    -webkit-animation: transitdescription 3.5s linear 9s;
+}
+
+
+/* KEYFRAMES */
+
+@-webkit-keyframes transitdescription {
+    15%     { margin-left: 45px;}
+}
+
+@-webkit-keyframes transitimage {
+    0%      { right: -100%;}
+    10%     { right: -webkit-calc(93% - 350px);}
+    25%    { right: -webkit-calc(90% - 350px);}
+    90%    { right: -webkit-calc(90% - 350px);}
+    100%    { right: -webkit-calc(200%);}
 }
 
 @-webkit-keyframes rotateimg {
 	50%	 {-webkit-transform: rotate(-10deg);}
 }
+
 @-webkit-keyframes pluswidth {
-	50%  {	width: 350px;}
+	50%  {	width: 450px;}
+}
+
+@-webkit-keyframes leaveimage {
+    50%  {  width: 450px;}
 }
