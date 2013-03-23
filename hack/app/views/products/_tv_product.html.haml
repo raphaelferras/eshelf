@@ -1,6 +1,6 @@
-%div{ :class => "product product-#{tv_product_counter + 1}"}
-	%img{ :src => tv_product.ml_data["thumbnail"] }
-	.description
-		%h1.stroke= tv_product.ml_data["title"]
-		= image_tag qrcode_product_path(tv_product, :format => "jpg"), :class => "qrcode"
-		%p.price.stroke= brl_currency tv_product.ml_data["price"]
+%article{ :class => "tv-product product product-#{tv_product_counter + 1}"}
+	%img{ :src => tv_product.ml_data["pictures"][0]["url"], :class => "tv-product-image" }
+	.tv-product-info
+		%h1.tv-product-title.stroke= tv_product.ml_data["title"]
+		%p.tv-product-price.stroke= brl_currency tv_product.ml_data["price"]
+		= image_tag qrcode_product_path(tv_product, :format => "jpg"), :class => "tv-product-qrcode"

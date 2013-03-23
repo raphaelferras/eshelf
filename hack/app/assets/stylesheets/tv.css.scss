@@ -7,11 +7,23 @@
 	);
 }
 
-h1 {
+.tv-product-title {
     color: #1b3fa9;
-    font-size: 40px;
+	width: 100%;
+    font-size: 35px;
+	line-height: 45px;
+	margin: 10px 0;
     font-variant: small-caps;
     font-family: 'Lilita One', cursive;
+	white-space: nowrap;
+	
+	footer & {
+		font-size: 20px;
+		line-height: 20px;
+		margin: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
 }
 
 .stroke {
@@ -42,42 +54,78 @@ h1 {
     1px 1px 10px #000;
 }
 
-.product {
+.tv-product {
     position: absolute;
     top: 10%;
     right: -100%;
+	
+	footer & {
+		position: static;
+		float: left;
+		width: 400px;
+	}
 }
 
-.product .description {
+.tv-product-info {
+	width: 600px;
     position: absolute;
-    top: -20px;
-    left: 450px;
-    white-space: nowrap;
+    top: 5%;
+    left: -webkit-calc(10% + 350px);
+	
+	footer & {
+		width: 180px;
+		padding: 0 10px;
+		position: static;
+		float: left;
+	}
 }
 
-.product .description .qrcode {
+.tv-product-qrcode {
     width: 100px;
     height: auto;
     padding: 10px;
     background: #fff;
+	
+	footer & {
+		width: 50px;
+		padding: 2px;
+	}
 }
 
-.product .description .price {
+.tv-product-price {
+	margin: 0;
     color: rgb(0, 139, 204);
-    font-size: 40px;
+    font-size: 80px;
+	line-height: 80px;
+	margin-bottom: 10px;
     font-variant: small-caps;
     font-family: 'Lilita One', cursive;
-}
-.product .description .price small {
-    font-size: 30px;
+	
+	footer & {
+		font-size: 20px;
+		line-height: 20px;
+		
+		small {
+			font-size: 10px;
+		}
+	}
+	
+	small {
+	    font-size: 30px;
+	}
 }
 
-.product > img {
-	width: 400px;
-	height: auto;
+.tv-product-image {
+	width: 300px;
     background-color: #fff;
-	padding: 10px 10px 15px;
+	border: 1px solid #efefef;
+	padding: 10px;
 	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, .25);
+	
+	footer & {
+		width: 100px;
+		float: left;
+	}
 }
 
 /* PROCESSAR AQUI! */
@@ -111,9 +159,9 @@ h1 {
 
 @-webkit-keyframes transitimage {
     0%      { right: -100%;}
-    10%     { right: -webkit-calc(93% - 350px);}
-    25%    { right: -webkit-calc(90% - 350px);}
-    90%    { right: -webkit-calc(90% - 350px);}
+    10%     { right: -webkit-calc(98% - 350px);}
+    25%    { right: -webkit-calc(95% - 350px);}
+    90%    { right: -webkit-calc(95% - 350px);}
     100%    { right: -webkit-calc(200%);}
 }
 
@@ -127,4 +175,11 @@ h1 {
 
 @-webkit-keyframes leaveimage {
     50%  {  width: 450px;}
+}
+
+footer {
+    position: absolute;
+    bottom: 5%;
+    left: 0px;
+    width: 100%;
 }
