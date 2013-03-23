@@ -1,0 +1,99 @@
+body {
+	background: -webkit-gradient(
+	  radial, 50% 8%, 220, 50% 8%, 620, from(#ffec32), to(#fec801)
+	);
+}
+
+#main {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+}
+
+.product {
+	position: absolute;
+	top: 20%;
+	right: -webkit-calc(90% - 300px);
+	animation: transitimage 2s;
+	-moz-animation: transitimage 2s;
+	-webkit-animation: transitimage 2s;
+	-o-animation: transitimage 2s;
+}
+
+@-webkit-keyframes transitimage {
+	0%		{ right: -100%;}
+	25%		{ right: -webkit-calc(93% - 300px);}
+	100%	{ right: -webkit-calc(90% - 300px);}
+}
+
+.product .description {
+	position: absolute;
+	top: -30px;
+	left: 400px;
+	white-space: nowrap;
+}
+
+h1 {
+	color: #1b3fa9;
+    text-shadow: 1px 1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px -1px 0 #fff,
+    0px 1px 0 #fff,
+    0px -1px 0 #fff,
+    -1px 0px 0 #fff,
+    1px 0px 0 #fff,
+    2px 2px 0 #fff,
+    -2px 2px 0 #fff,
+    2px -2px 0 #fff,
+    -2px -2px 0 #fff,
+    0px 2px 0 #fff,
+    0px -2px 0 #fff,
+    -2px 0px 0 #fff,
+    2px 0px 0 #fff,
+    1px 2px 0 #fff,
+    -1px 2px 0 #fff,
+    1px -2px 0 #fff,
+    -1px -2px 0 #fff,
+    2px 1px 0 #fff,
+    -2px 1px 0 #fff,
+    2px -1px 0 #fff,
+    -2px -1px 0 #fff,
+    1px 1px 10px #000;
+
+    font-size: 40px;
+    font-variant: small-caps;
+/*   -webkit-text-stroke: 4px white;*/
+	font-family: 'Lilita One', cursive;
+}
+
+.product img {
+	width: 300px;
+	height: auto;
+	padding: 10px;
+/*	background-color: #fff;*/
+	padding: 4px;
+/*	background-color: rgb(255, 255, 255);
+	-webkit-box-shadow: 0px 1px 22px rgb(136, 136, 136);
+	-moz-box-shadow: 0px 1px 22px rgb(136, 136, 136);
+	box-shadow: 0px 1px 55px rgb(136, 136, 136);*/
+	background: rgb(255, 255, 255);
+	display: inline;
+	float: left;
+	margin: 0 0 27px 30px;
+	padding: 10px 10px 15px;
+	text-align: center;
+	font-family: "Marker Felt", sans-serif;
+	text-decoration: none;
+	color: rgb(51, 51, 51);
+	font-size: 18px;
+	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, .25);
+	-webkit-animation: rotateimg 2.5s, pluswidth 1.5s linear .5s;
+}
+
+@-webkit-keyframes rotateimg {
+	50%	 {-webkit-transform: rotate(-10deg);}
+}
+@-webkit-keyframes pluswidth {
+	50%  {	width: 350px;}
+}
