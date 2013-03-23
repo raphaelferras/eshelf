@@ -10,6 +10,33 @@ body {
 	width: 100%;
 }
 
+footer {
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+    width: 100%;
+}
+
+footer section {
+    margin-left: 75px;
+}
+
+footer .qrcode {
+    float: left;
+    padding: 2px;
+    margin-right: 8px;
+}
+
+footer span {
+    width: 200px;
+    float: left;
+    margin-right: 15px;
+    color: #1b3fa9;
+    font-size: 20px;
+    font-variant: small-caps;
+    font-family: 'Lilita One', cursive;
+}
+
 h1 {
     color: #1b3fa9;
     font-size: 40px;
@@ -55,10 +82,14 @@ h1 {
     position: absolute;
     top: -20px;
     left: 450px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
     white-space: nowrap;
+    width: 400px;
 }
 
-.product .description > img {
+.qrcode {
     width: 100px;
     height: auto;
     padding: 10px;
