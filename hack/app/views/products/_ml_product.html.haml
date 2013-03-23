@@ -1,6 +1,5 @@
-%div
-	%img{ :src => ml_product["thumbnail"] }
-	%h1= ml_product["title"]
-	%h2= ml_product["subtitle"]
-	%p= brl_currency ml_product["price"]
-	= link_to "Anunciar", products_path(:product => { :mid => ml_product["id"] }), :method => :post
+%blockquote
+	%h4
+		%img{ :src => ml_product["thumbnail"] }
+		= ml_product["title"]
+		%small= brl_currency ml_product["price"]

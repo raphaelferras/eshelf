@@ -1,6 +1,5 @@
-%div
-	%img{ :src => product.ml_data["thumbnail"] }
-	%h1= product.ml_data["title"]
-	%h2= product.ml_data["subtitle"]
-	%p= brl_currency product.ml_data["price"]
-	= link_to "Remover anúncio", product, :method => :delete, :confirm => "Tem certeza?"
+%blockquote
+	%h4
+		%img{ :src => product.ml_data["thumbnail"] }
+		= product.ml_data["title"]
+		%small= brl_currency product.ml_data["price"]
