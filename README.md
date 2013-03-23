@@ -1,22 +1,30 @@
-= Hackathon Livre by Mercado Livre
+# Hackathon Livre by Mercado Livre
 
-== Project e-Shelf
+## Project e-Shelf
 
-LINK com o sistema rodando: http://eshelf-hackathon.herokuapp.com/
-LINK da TV (somente usuario logado): http://eshelf-hackathon.herokuapp.com/products/tv
+Demonstração vendedor: http://eshelf-hackathon.herokuapp.com/
 
-1 Passo
-Acessar o sistema e logar com o usuário:
+Demonstração telão para o vendedor: http://eshelf-hackathon.herokuapp.com/products/tv
+
+## Como usar
+
+### 1º Passo
+
+Acessar a demonstração do vendedor e fazer login.
+
+Usuário teste:
+
 Login: TT469086
+
 Senha: qatest4172
 
-2 Passo
-Acessar a TV
 
-{
-    "id": 135417123,
-    "nickname": "TT469086",
-    "password": "qatest4172",
-    "site_status": "active",
-    "email": "test_user_77124003@testuser.com"
-}
+### 2º Passo
+
+Acessar o telão para exemplo
+
+## Equipe
+
+Glauber Campinho
+Maurício Giordano
+Raphael Ferras
