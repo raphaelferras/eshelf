@@ -25,9 +25,12 @@ ActiveRecord::Schema.define(:version => 20130321233046) do
 
   create_table "products", :force => true do |t|
     t.string   "mid"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "products", ["user_id"], :name => "index_products_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

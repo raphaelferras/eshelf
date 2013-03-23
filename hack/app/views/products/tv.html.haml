@@ -1,13 +1,7 @@
-%h1 Listing products
-
-= form_tag products_path, :method => :get do
-	= search_field_tag 'q', params[:q]
-	= submit_tag 'Buscar'
-
-- @ml_products.each do |product|
-	%div
-		%img{ :src => product["thumbnail"] }
-		%h1= product["title"]
-		%h2= product["subtitle"]
-		%p= product["price"]
-		= link_to "Anunciar", products_path(:product => { :mid => product["id"] }), :method => :post
+%section#main
+	- @products.each do |product|
+		.product
+			%img{ :src => product.ml_data["thumbnail"] }
+			.description
+				%h1= product.ml_data["title"]
+				= image_tag qrcode_product_path(product, :format => "jpg")

@@ -4,7 +4,10 @@ class ProductsController < ApplicationController
   def index
     search = mercado_livre.user_products(current_user)
     @ml_products = mercado_livre.items search["results"]
+    @products = Product.where(:user_id => current_user.id)
     
+    @products, @ml_products = ml_to_products(@products, @ml_products)
+    puts @ml_products
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
@@ -41,7 +44,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(params[:product])
+    @product = Product.new(params[:product].merge :user_id => current_user.id)
 
     respond_to do |format|
       if @product.save
@@ -83,13 +86,38 @@ class ProductsController < ApplicationController
   end
   
   def tv
-    @products = Product.find(:user_id => current_user.id)
+    @products = Product.where(:user_id => current_user.id)
     @ml_products = mercado_livre.items @products.map{ |p| p.mid }
+    
+    @products, @ml_products = ml_to_products(@products, @ml_products)
     
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }
     end
+  end
+  
+  def qrcode
+    @product = Product.find(params[:id])
+    respond_to do |format|
+      format.svg  { render :qrcode => @product.mid, :level => :l, :unit => 10 }
+      format.png  { render :qrcode => @product.mid }
+      format.gif  { render :qrcode => @product.mid }
+      format.jpeg { render :qrcode => @product.mid }
+    end
+  end
+  
+  protected
+  
+  def ml_to_products(products, ml_products)
+    ml_products = ml_products.inject({}) do |hash, p|
+      hash[p["id"]] = p
+      hash
+    end
+    products.each do |product|
+      product.ml_data = ml_products.delete product.mid
+    end
+    return products, ml_products.values
   end
   
 end

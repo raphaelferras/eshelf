@@ -1,3 +1,21 @@
+%h1 Listing products
+
+= form_tag products_path, :method => :get do
+	= search_field_tag 'q', params[:q]
+	= submit_tag 'Buscar'
+
+%h2 Anunciados
+
+- @products.each do |product|
+	%div
+		%img{ :src => product.ml_data["thumbnail"] }
+		%h1= product.ml_data["title"]
+		%h2= product.ml_data["subtitle"]
+		%p= product.ml_data["price"]
+		= link_to "Remover anúncio", product, :method => :delete, :confirm => "Tem certeza?"
+
+%h2 No ML
+		
 - @ml_products.each do |product|
 	%div
 		%img{ :src => product["thumbnail"] }

@@ -1,6 +1,9 @@
 Hack::Application.routes.draw do
   
   resources :products do
+    member do
+      get 'qrcode'
+    end
     collection do
       get 'tv'
     end
