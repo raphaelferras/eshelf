@@ -30,7 +30,7 @@ public class AuthActivity extends Activity {
 		setContentView(R.layout.activity_auth);
 
 		WebView webview = (WebView) findViewById(R.id.mywebview);
-		webview.loadUrl("https://auth.mercadolibre.com.ar/authorization?response_type=token&client_id="
+		webview.loadUrl("https://auth.mercadolivre.com.br/authorization?response_type=token&client_id="
 				+ CLIENT_ID);
 		webview.setWebViewClient(new WebViewClient() {
 
@@ -55,8 +55,8 @@ public class AuthActivity extends Activity {
 					if (aux.startsWith(Common.ACCESS_TOKEN_NAME)) {
 						aux = aux.substring(Common.ACCESS_TOKEN_NAME.length());
 						int i = aux.indexOf('&');
-						Common.accessToken = aux.substring(0,i);
-						Log.d("PH", Common.accessToken);
+						Common.getInstance().accessToken = aux.substring(0,i);
+						Log.d("PH", Common.getInstance().accessToken);
 						
 						
 						

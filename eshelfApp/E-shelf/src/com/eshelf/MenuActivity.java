@@ -1,24 +1,54 @@
 package com.eshelf;
 
-import android.os.Bundle;
+import com.eshelf.util.Common;
+
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
+import android.view.View;
+import android.widget.Button;
 
 public class MenuActivity extends Activity {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
-    }
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_menu);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_menu, menu);
-        return true;
-    }
+		final Button bQRCode = (Button) findViewById(R.id.qrcode);
+		bQRCode.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(getApplicationContext(),
+						QRCodeReader.class);
+				startActivity(intent);
+			}
+		});
 
-    
+		final Button bLogOut = (Button) findViewById(R.id.logout);
+		bLogOut.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Common.getInstance().clear();
+				Intent intent = new Intent(getApplicationContext(),
+						AuthActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		final Button btItemsList = (Button) findViewById(R.id.items_list);
+		btItemsList.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(getApplicationContext(),
+						ItemsListActivity.class);
+				startActivity(intent);
+			}
+		});
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.activity_menu, menu);
+		return true;
+	}
+
 }

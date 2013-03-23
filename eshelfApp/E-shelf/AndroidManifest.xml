@@ -15,13 +15,14 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".AuthActivity"
-            android:label="@string/title_activity_auth" >
+            android:label="@string/title_activity_auth"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".SplashActivity"
             android:label="@string/title_activity_splash"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
-            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,12 +31,23 @@
         </activity>
         <activity
             android:name=".MenuActivity"
-            android:label="@string/title_activity_menu" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:label="@string/title_activity_menu"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".QRCodeReader"
+            android:label="@string/title_activity_qrcode_reader"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ItemActivity"
+            android:label="@string/title_activity_item"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ItemsListActivity"
+            android:label="@string/title_activity_items_list" 
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

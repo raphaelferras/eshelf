@@ -2,11 +2,13 @@ package com.eshelf.services;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
@@ -16,16 +18,17 @@ import android.util.Log;
 
 import com.eshelf.util.Common;
 
-public class ServiceRequest {
+public class ServicePost {
 
 	private final String mServiceName;
 	private final int isTokenService;
-
+	private final String mStringEntity;
 	
 	
-	public ServiceRequest(String serviceName, int token) {
+	public ServicePost(String serviceName, int token, String stringEntity) {
 		mServiceName = serviceName;
 		isTokenService = token;
+		mStringEntity = stringEntity;
 	}
 
 	public void execute() {
@@ -50,22 +53,32 @@ public class ServiceRequest {
 
 		@Override
 		protected String doInBackground(Void... params) {
-			Log.d("PH",mServiceName + ": doInBackground");
+			Log.d("PH",mServiceName + ": doInBackground(POST)");
 			HttpClient httpClient = new DefaultHttpClient();
 			HttpContext localContext = new BasicHttpContext();
-			Log.d("PH",mServiceName + "(REQUEST) PQP: " + Common.getInstance().accessToken);
-
-			Log.d("PH",Common.getInstance().accessToken);
+			
 			String url = Common.SV_BASE_URL + mServiceName;
 			if( isTokenService  == Common.WITH_TOKEN){
 				url = url+ "?access_token=" + Common.getInstance().accessToken;
 			}
-			Log.d("PH",mServiceName + " url: " + url);
 
-			HttpGet httpGet = new HttpGet(url);
+			Log.d("PH",mServiceName + "(POST) url: " + url);
+			Log.d("PH",mServiceName + "(POST) sprintEntity: " + mStringEntity);
+
+			HttpPost httpPost = new HttpPost(url);
+			httpPost.addHeader("Content-Type", "application/json"); 
+			StringEntity entity2 = null;
+			try {
+				entity2 = new StringEntity(mStringEntity, "UTF-8");
+			} catch (UnsupportedEncodingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			entity2.setContentType("application/json");
+			httpPost.setEntity(entity2);
 			String text = null;
 			try {
-				HttpResponse response = httpClient.execute(httpGet,
+				HttpResponse response = httpClient.execute(httpPost,
 						localContext);
 				HttpEntity entity = response.getEntity();
 				text = getASCIIContentFromEntity(entity);
@@ -77,7 +90,7 @@ public class ServiceRequest {
 
 		protected void onPostExecute(String results) {
 			if (results != null) {
-				Log.d("PH", mServiceName + " results: " + results);
+				Log.d("PH", mServiceName + "(POST) results: " + results);
 				work(results);
 			} else Log.d("PH", "result is NULL");
 		}
