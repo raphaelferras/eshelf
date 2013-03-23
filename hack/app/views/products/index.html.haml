@@ -1,13 +1,24 @@
-%h1 Listing products
+%.navbar.navbar-inverse.navbar-fixed-top
+	%.navbar-inner
+		%.container
+			%a.brand{:href=> "#"}
+				%img{:src=>"images/logo.png"}
+			%.pull-right
+            	%ul.nav
+              		%li.active
+              			%a{:href="#"} Logout
 
-= form_tag products_path, :method => :get do
-	= search_field_tag 'q', params[:q]
-	= submit_tag 'Buscar'
+%.container
+	%.row
+		%.span12
+			%.page-header
+				%h1 Meus produtos
+			%h3 Anunciados
+			%.anunciado
+				= render :partial => "product", :collection => @products
+			%h3 Não anunciados
+			%.nao-anunciado
+				= render :partial => "ml_product", :collection => @ml_products
 
-%h2 Anunciados
-
-= render :partial => "product", :collection => @products
-
-%h2 No ML
-
-= render :partial => "ml_product", :collection => @ml_products
+	%.footer
+		%p &copy; Powered by Mercado Livre
