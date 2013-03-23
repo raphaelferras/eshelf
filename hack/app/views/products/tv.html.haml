@@ -1,7 +1,2 @@
-%section#main
-	- @products.each do |product|
-		.product
-			%img{ :src => product.ml_data["thumbnail"] }
-			.description
-				%h1= product.ml_data["title"]
-				= image_tag qrcode_product_path(product, :format => "jpg")
+%section#tv
+	= render :partial => "tv_product", :collection => @products

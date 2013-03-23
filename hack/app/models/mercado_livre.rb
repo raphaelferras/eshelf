@@ -55,8 +55,8 @@ class MercadoLivre
     get_auth "/users/#{user.identity.uid}/items/search"
   end
   
-  def items(ids)
-    get "/items", { :ids => ids.join(",") }
+  def items(ids = [])
+     ids.empty? ? [] : get("/items", { :ids => ids.join(",") })
   end
   
   def search(query)

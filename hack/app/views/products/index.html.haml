@@ -6,20 +6,8 @@
 
 %h2 Anunciados
 
-- @products.each do |product|
-	%div
-		%img{ :src => product.ml_data["thumbnail"] }
-		%h1= product.ml_data["title"]
-		%h2= product.ml_data["subtitle"]
-		%p= product.ml_data["price"]
-		= link_to "Remover anúncio", product, :method => :delete, :confirm => "Tem certeza?"
+= render :partial => "product", :collection => @products
 
 %h2 No ML
-		
-- @ml_products.each do |product|
-	%div
-		%img{ :src => product["thumbnail"] }
-		%h1= product["title"]
-		%h2= product["subtitle"]
-		%p= product["price"]
-		= link_to "Anunciar", products_path(:product => { :mid => product["id"] }), :method => :post
+
+= render :partial => "ml_product", :collection => @ml_products

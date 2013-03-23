@@ -1,4 +1,11 @@
 class SessionsController < ApplicationController
+  
+  before_filter :authenticated, :only => :destroy
+  before_filter :not_authenticated, :except => :destroy
+  
+  def new
+  end
+  
   def create
     auth = request.env['omniauth.auth']
     # Find an identity here
@@ -12,12 +19,12 @@ class SessionsController < ApplicationController
     self.current_user = @identity.user
     self.access_token = auth['credentials']['token']
     
-    redirect_to root_url, notice: "Signed in!"
+    redirect_to root_url
   end
 
   def destroy
     self.current_user = nil
     self.access_token = nil
-    redirect_to root_url, notice: "Signed out!"
+    redirect_to root_url
   end
 end
