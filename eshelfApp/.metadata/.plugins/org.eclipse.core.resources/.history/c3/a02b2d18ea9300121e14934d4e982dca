@@ -1,0 +1,38 @@
+package com.eshelf;
+
+import com.eshelf.services.ServiceRequest;
+import com.eshelf.util.Common;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+public class ItemsListActivity extends Activity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_items_list);
+        
+		ServiceRequest teste = new ServiceRequest(Common.SV_BOOKMARKS, Common.NO_TOKEN) {
+			public void work(String result) {
+				parserJson(result);
+			}
+
+		};
+		teste.execute();
+    }
+
+	private void parserJson(String result){
+		
+	}
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_items_list, menu);
+        return true;
+    }   
+}

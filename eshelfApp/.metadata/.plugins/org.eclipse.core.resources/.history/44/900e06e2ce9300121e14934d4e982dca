@@ -1,0 +1,36 @@
+package com.eshelf;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.support.v4.app.NavUtils;
+
+public class ItemActivity extends Activity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_item);
+
+        Bundle extras = getIntent().getExtras();
+        String mProductID = extras.getString("productID", "");
+        
+        /*						ServiceRequest teste = new ServiceRequest(Common.SV_MY_INFO){
+		public void work(){
+			Log.d("PH", "Deu certo");
+		}
+	};
+	teste.execute();*/
+        
+        
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_item, menu);
+        return true;
+    }
+
+    
+}

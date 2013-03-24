@@ -1,0 +1,96 @@
+package com.eshelf;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Pair;
+import android.view.Menu;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import com.eshelf.services.ServiceRequest;
+import com.eshelf.util.Common;
+
+public class ItemsListActivity extends Activity {
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_items_list);
+
+		ServiceRequest teste = new ServiceRequest(Common.SV_BOOKMARKS,
+				Common.WITH_TOKEN) {
+			public void work(String result) {
+				parserJson(result);
+			}
+
+		};
+		teste.execute();
+	}
+
+	private void parserJson(String result) {
+		JSONArray jObject;
+		try {
+			jObject = new JSONArray(result);
+
+			String ids = "";
+			for (int i = 0; i < jObject.length(); i++) {
+				JSONObject menuObject = jObject.getJSONObject(i);
+
+				// String idItem = menuObject.getString("item_id");
+				if (i == 0) {
+					ids += menuObject.getString("item_id");
+
+				} else {
+					ids += "," + menuObject.getString("item_id");
+				}
+			}
+
+			ServiceRequest teste = new ServiceRequest(Common.SV_ITEM_DETAILS
+					+ "?ids=" + ids, Common.NO_TOKEN) {
+				public void work(String result) {
+					parserJson2(result);
+				}
+
+			};
+			teste.execute();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private void parserJson2(String result) {
+		JSONArray jObject;
+		Pair<String,String>[] values = null;
+		try {
+			jObject = new JSONArray(result);
+			values = new String[jObject.length()];
+			for (int i = 0; i < jObject.length(); i++) {
+				JSONObject menuObject = jObject.getJSONObject(i);
+
+				// String idItem = menuObject.getString("item_id");
+				values[i] = menuObject.getString("title");
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ListView listView = (ListView) findViewById(R.id.mylist);
+
+		ArrayAdapter<String> adapter = new ItemsListAdapter(this, values);
+
+		// Assign adapter to ListView
+		listView.setAdapter(adapter);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.activity_items_list, menu);
+		return true;
+	}
+
+}

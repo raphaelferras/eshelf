@@ -6,5 +6,8 @@
     <string name="title_activity_auth">AuthActivity</string>
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_activity_qrcode_reader">QRCodeReader</string>
+    <string name="title_activity_item">ItemActivity</string>
+    <string name="title_activity_items_list">ItemsListActivity</string>
 
 </resources>

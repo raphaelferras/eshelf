@@ -19,9 +19,13 @@ import com.eshelf.util.Common;
 public class ServiceRequest {
 
 	private final String mServiceName;
+	private final int isTokenService;
 
-	public ServiceRequest(String serviceName) {
+	
+	
+	public ServiceRequest(String serviceName, int token) {
 		mServiceName = serviceName;
+		isTokenService = token;
 	}
 
 	public void execute() {
@@ -49,8 +53,13 @@ public class ServiceRequest {
 			Log.d("PH",mServiceName + ": doInBackground");
 			HttpClient httpClient = new DefaultHttpClient();
 			HttpContext localContext = new BasicHttpContext();
-			String url = Common.SV_BASE_URL + mServiceName
-					+ "?access_token=" + Common.accessToken;
+			Log.d("PH",mServiceName + "(REQUEST) PQP: " + Common.getInstance().accessToken);
+
+			Log.d("PH",Common.getInstance().accessToken);
+			String url = Common.SV_BASE_URL + mServiceName;
+			if( isTokenService  == Common.WITH_TOKEN){
+				url = url+ "?access_token=" + Common.getInstance().accessToken;
+			}
 			Log.d("PH",mServiceName + " url: " + url);
 
 			HttpGet httpGet = new HttpGet(url);
@@ -69,12 +78,12 @@ public class ServiceRequest {
 		protected void onPostExecute(String results) {
 			if (results != null) {
 				Log.d("PH", mServiceName + " results: " + results);
-				work();
+				work(results);
 			} else Log.d("PH", "result is NULL");
 		}
 	}
 	
-	public void work(){
+	public void work(String result){
 		
 	}
 }

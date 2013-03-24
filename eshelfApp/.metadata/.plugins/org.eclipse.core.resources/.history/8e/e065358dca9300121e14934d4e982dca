@@ -1,0 +1,33 @@
+package com.eshelf;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+
+public class MenuActivity extends Activity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu);
+        
+        
+        final Button bQRCode=(Button)findViewById(R.id.qrcode);
+        bQRCode.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+            showToast("Button Clicked");
+           }
+          });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_menu, menu);
+        return true;
+    }
+
+    
+}

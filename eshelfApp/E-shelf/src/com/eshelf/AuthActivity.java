@@ -8,12 +8,10 @@ import android.view.Menu;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.eshelf.services.ServiceRequest;
 import com.eshelf.util.Common;
 
 public class AuthActivity extends Activity {
 
-	
 	public static final String CLIENT_ID = "8254651353206319";
 	public static String TOKEN = "8254651353206319";
 
@@ -30,7 +28,7 @@ public class AuthActivity extends Activity {
 		setContentView(R.layout.activity_auth);
 
 		WebView webview = (WebView) findViewById(R.id.mywebview);
-		webview.loadUrl("https://auth.mercadolibre.com.ar/authorization?response_type=token&client_id="
+		webview.loadUrl("https://auth.mercadolivre.com.br/authorization?response_type=token&client_id="
 				+ CLIENT_ID);
 		webview.setWebViewClient(new WebViewClient() {
 
@@ -51,28 +49,25 @@ public class AuthActivity extends Activity {
 					String aux = url;
 					aux = aux.substring(Common.URL_BASE.length());
 					Log.d("PH", "onPageFinished:NO_BASE " + aux);
-					
+
 					if (aux.startsWith(Common.ACCESS_TOKEN_NAME)) {
 						aux = aux.substring(Common.ACCESS_TOKEN_NAME.length());
 						int i = aux.indexOf('&');
-						Common.accessToken = aux.substring(0,i);
-						Log.d("PH", Common.accessToken);
-						
-						
-						
-						Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+						Common.getInstance().accessToken = aux.substring(0, i);
+						Log.d("PH", Common.getInstance().accessToken);
+
+						Intent intent = new Intent(getApplicationContext(),
+								MenuActivity.class);
 						startActivity(intent);
 
-/*						ServiceRequest teste = new ServiceRequest(Common.SV_MY_INFO){
-							public void work(){
-								Log.d("PH", "Deu certo");
-							}
-						};
-						teste.execute();*/
+						/*
+						 * ServiceRequest teste = new
+						 * ServiceRequest(Common.SV_MY_INFO){ public void
+						 * work(){ Log.d("PH", "Deu certo"); } };
+						 * teste.execute();
+						 */
 					}
 
-					
-					
 				}
 			}
 
