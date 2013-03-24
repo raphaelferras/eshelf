@@ -21,7 +21,9 @@ Senha: qatest4172
 
 ### 2º Passo
 
-Acessar o telão para exemplo
+Instalar o arquivo E-shelf.apk no Android.
+
+Acessar o telão e testar.
 
 ## Equipe
 
